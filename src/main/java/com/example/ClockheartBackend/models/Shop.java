@@ -1,17 +1,30 @@
 package com.example.ClockheartBackend.models;
 
+import com.example.ClockheartBackend.behaviours.IOwn;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Shop {
+@Entity
+@Table(name = "shop")
+public class Shop implements IOwn {
 
-//    private Long id;
-    private ArrayList<Item> items;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @OneToMany(mappedBy = "owner")
+    @JsonIgnoreProperties({"owner"})
+    private List<Item> items;
 
     public Shop() {
         this.items = new ArrayList<>();
     }
 
-    public ArrayList<Item> getItems() {
+    public List<Item> getItems() {
         return items;
     }
 

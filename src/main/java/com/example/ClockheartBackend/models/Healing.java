@@ -1,7 +1,12 @@
 package com.example.ClockheartBackend.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class Healing extends Item{
 
+    @Column(name = "healing")
     private int healing;
 
     public Healing(String name, int value, int healing) {

@@ -1,22 +1,42 @@
 package com.example.ClockheartBackend.models;
 
+import com.example.ClockheartBackend.behaviours.IOwn;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Player {
+@Entity
+@Table(name = "players")
+public class Player implements IOwn {
 
-//    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "health_points")
     private int healthPoints;
+    @Column(name = "intelligence")
     private int intelligence;
+    @Column(name = "strength")
     private int strength;
+    @Column(name = "charisma")
     private int charisma;
+    @Column(name = "currency")
     private int currency;
+    @Column(name = "type")
     private String type;
-    private ArrayList<Item> items;
 
-    public Player(String name, int healthPoints, int intelligence, int strength, int charisma, String type) {
+    @OneToMany(mappedBy = "owner")
+    @JsonIgnoreProperties({"owner"})
+    private List<Item> items;
+
+    public Player(String name, int intelligence, int strength, int charisma, String type) {
         this.name = name;
-        this.healthPoints = healthPoints;
+        this.healthPoints = 100;
         this.intelligence = intelligence;
         this.strength = strength;
         this.charisma = charisma;
@@ -69,7 +89,7 @@ public class Player {
         return type;
     }
 
-    public ArrayList<Item> getItems() {
+    public List<Item> getItems() {
         return items;
     }
 
@@ -85,10 +105,14 @@ public class Player {
         this.currency = currency;
     }
 
+    public void addItem(Item item){
+        this.items.add(item);
+    }
+
     public boolean buyItem(Item item) {
         if (currency >= item.getValue()){
             currency -= item.getValue();
-            this.items.add(item);
+            this.addItem(item);
             return true;
         }
         return false;

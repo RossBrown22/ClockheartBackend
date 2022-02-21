@@ -15,7 +15,7 @@ public class PlayerTest {
 
     @Before
     public void before(){
-        player = new Player("Fred", 100, 5, 5, 5, "Broca");
+        player = new Player("Fred", 5, 5, 5, "Broca");
         shop = new Shop();
         item = new Attack("Sword", 5, 5);
         shop.addItem(item);
@@ -33,4 +33,3 @@ public class PlayerTest {
         assertEquals(1, player.getItems().size());
     }
 }
-
