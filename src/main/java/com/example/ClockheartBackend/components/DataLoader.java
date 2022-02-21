@@ -29,7 +29,7 @@ public class DataLoader implements ApplicationRunner {
         Player player = new Player("Clocky", 5, 5, 5, "Broca");
         playerRepository.save(player);
 
-        Shop shop = new Shop();
+        Shop shop = new Shop("Zebediah Flint");
         shopRepository.save(shop);
 
         Attack sword = new Attack("Sword", 5, 5);

@@ -16,12 +16,16 @@ public class Shop implements IOwn {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "name")
+    private String name;
+
     @OneToMany(mappedBy = "owner")
     @JsonIgnoreProperties({"owner"})
     private List<Item> items;
 
-    public Shop() {
+    public Shop(String name) {
         this.items = new ArrayList<>();
+        this.name = name;
     }
 
     public List<Item> getItems() {
