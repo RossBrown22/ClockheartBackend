@@ -19,13 +19,16 @@ public class Shop implements IOwn {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "owner")
-    @JsonIgnoreProperties({"owner"})
+    @OneToMany(mappedBy = "shop")
+    @JsonIgnoreProperties({"shop"})
     private List<Item> items;
 
     public Shop(String name) {
         this.items = new ArrayList<>();
         this.name = name;
+    }
+
+    public Shop() {
     }
 
     public List<Item> getItems() {
@@ -42,5 +45,25 @@ public class Shop implements IOwn {
 
     public void addItem(Item item){
         this.items.add(item);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 }

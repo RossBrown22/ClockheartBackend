@@ -32,7 +32,7 @@ public class DataLoader implements ApplicationRunner {
         Shop shop = new Shop("Zebediah Flint");
         shopRepository.save(shop);
 
-        Attack sword = new Attack("Sword", 5, 5);
+        Attack sword = new Attack("Sword", 5, shop, 5);
         itemRepository.save(sword);
     }
 }

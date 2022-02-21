@@ -30,8 +30,8 @@ public class Player implements IOwn {
     @Column(name = "type")
     private String type;
 
-    @OneToMany(mappedBy = "owner")
-    @JsonIgnoreProperties({"owner"})
+    @OneToMany(mappedBy = "player")
+    @JsonIgnoreProperties({"player"})
     private List<Item> items;
 
     public Player(String name, int intelligence, int strength, int charisma, String type) {
@@ -43,6 +43,9 @@ public class Player implements IOwn {
         this.currency = 10;
         this.type = type;
         this.items = new ArrayList<Item>();
+    }
+
+    public Player() {
     }
 
     public String getName() {
@@ -116,5 +119,21 @@ public class Player implements IOwn {
             return true;
         }
         return false;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 }

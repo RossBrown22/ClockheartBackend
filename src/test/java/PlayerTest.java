@@ -17,7 +17,7 @@ public class PlayerTest {
     public void before(){
         player = new Player("Fred", 5, 5, 5, "Broca");
         shop = new Shop("Zebediah Flint");
-        item = new Attack("Sword", 5, 5);
+        item = new Attack("Sword", 5, shop, 5);
         shop.addItem(item);
     }
 
