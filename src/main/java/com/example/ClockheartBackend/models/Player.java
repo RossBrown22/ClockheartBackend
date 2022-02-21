@@ -45,6 +45,9 @@ public class Player {
     }
 
     public Player() {
+        this.healthPoints = 100;
+        this.currency = 10;
+        this.items = new ArrayList<Item>();
     }
 
     public String getName() {
@@ -130,9 +133,5 @@ public class Player {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
     }
 }
