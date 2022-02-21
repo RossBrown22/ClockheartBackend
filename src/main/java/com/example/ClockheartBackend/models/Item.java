@@ -1,8 +1,5 @@
 package com.example.ClockheartBackend.models;
 
-import com.example.ClockheartBackend.behaviours.IOwn;
-import org.springframework.context.annotation.Bean;
-
 import javax.persistence.*;
 
 @Entity

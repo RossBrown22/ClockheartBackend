@@ -1,6 +1,5 @@
 package com.example.ClockheartBackend.models;
 
-import com.example.ClockheartBackend.behaviours.IOwn;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -9,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "players")
-public class Player implements IOwn {
+public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
