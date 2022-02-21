@@ -15,6 +15,10 @@ public class Attack extends Item{
         this.damage = damage;
     }
 
+    public Attack(){
+
+    }
+
     public int getDamage() {
         return damage;
     }
